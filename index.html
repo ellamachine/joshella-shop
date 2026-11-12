@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08080b">
+<meta name="description" content="JOSHELLA Smart Shop — Uganda's home of trendy clothes, shoes, jewelry & perfumes. Same-day delivery in Kampala.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<title>JOSHELLA Smart Shop — Clothes • Shoes • Jewelry • Perfumes</title>
+
+<link rel="manifest" id="manifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080b; --card:#14141b; --line:#26262f;
+  --gold:#f3c860; --gold2:#e0a92b; --goldL:#ffe9a8;
+  --txt:#f6f6f8; --mut:#95959f;
+  --wa:#25d366; --r:18px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color:var(--txt); min-height:100vh; padding-bottom:104px;
+  overscroll-behavior-y:contain; -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(900px 520px at 85% -8%, rgba(243,200,96,.15), transparent 62%),
+    radial-gradient(760px 420px at -10% 8%, rgba(243,200,96,.07), transparent 60%),
+    var(--bg);
+  background-attachment:fixed;
+}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.spacer{flex:1}
+
+.gold-text{
+  background:linear-gradient(100deg,#8a6d1f 0%,#f3c860 22%,#fffbe6 40%,#f3c860 58%,#8a6d1f 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:shine 5s linear infinite;
+}
+@keyframes shine{0%{background-position:-220% 0}100%{background-position:220% 0}}
+
+header{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;gap:11px;
+  padding:calc(11px + env(safe-area-inset-top)) 16px 11px;
+  background:rgba(8,8,11,.74);
+  backdrop-filter:blur(16px) saturate(170%);
+  -webkit-backdrop-filter:blur(16px) saturate(170%);
+  border-bottom:1px solid rgba(243,200,96,.16);
+}
+.logo{
+  width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+  font-family:'Playfair Display',serif;font-weight:800;font-size:1.15rem;color:#1a1305;
+  background:linear-gradient(140deg,#ffe9a8,#e0a92b 55%,#b8860b);
+  box-shadow:0 6px 18px rgba(243,200,96,.32), inset 0 1px 0 rgba(255,255,255,.6);
+  flex:none;
+}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Playfair Display',serif;font-size:1.28rem;letter-spacing:.4px}
+.brand small{font-size:.52rem;letter-spacing:.34em;color:var(--mut);margin-top:5px}
+.icon-btn{
+  position:relative;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+  font-size:1.15rem;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);transition:.2s;
+}
+.icon-btn:active{transform:scale(.93)}
+.icon-btn.pop{animation:pop .45s ease}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)}}
+.count{
+  position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;
+  border-radius:999px;background:linear-gradient(135deg,#ff3d6e,#ff8a3d);
+  font-size:.62rem;font-weight:700;display:grid;place-items:center;
+  box-shadow:0 3px 10px rgba(255,61,110,.55);
+}
+
+.hero{
+  position:relative;margin:16px;padding:26px 20px 20px;border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 90% 0%, rgba(243,200,96,.22), transparent 58%),
+    linear-gradient(165deg,#1b1726 0%,#12121a 52%,#0c0c11 100%);
+  border:1px solid rgba(243,200,96,.22);
+  box-shadow:0 22px 50px -18px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hero::after{
+  content:'';position:absolute;top:-60%;left:-40%;width:60%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.09),transparent);
+  transform:rotate(14deg);animation:sweep 6s ease-in-out infinite;pointer-events:none;
+}
+@keyframes sweep{0%,100%{left:-60%}50%{left:130%}}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:500;
+  letter-spacing:.06em;padding:6px 12px;border-radius:999px;
+  background:rgba(243,200,96,.12);border:1px solid rgba(243,200,96,.35);color:var(--goldL);
+}
+.hero h1{
+  font-family:'Playfair Display',serif;font-size:2.1rem;line-height:1.1;
+  margin:14px 0 10px;letter-spacing:-.5px;
+}
+.hero h1 em{font-style:normal}
+.hero p{font-size:.83rem;color:var(--mut);line-height:1.6;max-width:34ch}
+.hero-cta{display:flex;gap:10px;margin:18px 0 20px;flex-wrap:wrap}
+.btn{
+  padding:12px 22px;border-radius:14px;font-size:.8rem;font-weight:600;transition:.2s;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.btn:active{transform:scale(.96)}
+.btn.gold{
+  background:linear-gradient(135deg,#ffe9a8,#f3c860 40%,#d19b1e);
+  color:#1a1305;box-shadow:0 10px 26px -8px rgba(243,200,96,.75);
+}
+.btn.ghost{
+  background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.45);color:#6ef0a1;
+}
+.hero-strip{display:flex;gap:10px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+.hero-strip div{flex:1;display:flex;flex-direction:column;gap:3px}
+.hero-strip b{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--goldL)}
+.hero-strip span{font-size:.58rem;color:var(--mut);letter-spacing:.04em}
+
+.toolbar{position:sticky;top:63px;z-index:40;background:rgba(8,8,11,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:10px 0 12px}
+.search{
+  margin:0 16px 10px;display:flex;align-items:center;gap:9px;
+  background:#13131a;border:1px solid var(--line);border-radius:14px;padding:11px 14px;
+  transition:border-color .25s;
+}
+.search:focus-within{border-color:rgba(243,200,96,.55);box-shadow:0 0 0 3px rgba(243,200,96,.09)}
+.search input{
+  flex:1;background:none;border:0;outline:none;color:var(--txt);font-size:.82rem;
+  font-family:inherit;
+}
+.search input::placeholder{color:#5d5d68}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 16px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;padding:9px 16px;border-radius:999px;font-size:.72rem;font-weight:500;
+  background:#13131a;border:1px solid var(--line);color:#b9b9c4;transition:.22s;white-space:nowrap;
+}
+.chip.active{
+  background:linear-gradient(135deg,#ffe9a8,#e0a92b);color:#1a1305;border-color:transparent;
+  box-shadow:0 8px 20px -8px rgba(243,200,96,.85);font-weight:600;
+}
+
+.grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:13px;
+  padding:6px 16px 20px;
+}
+@media(min-width:620px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(4,1fr);max-width:1140px;margin:0 auto}}
+
+.card{
+  position:relative;display:flex;flex-direction:column;overflow:hidden;
+  background:linear-gradient(180deg,#191921,#111117);
+  border:1px solid var(--line);border-radius:var(--r);
+  transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .28s,box-shadow .28s;
+  animation:rise .45s backwards;
+}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.card:hover{transform:translateY(-5px);border-color:rgba(243,200,96,.45);
+  box-shadow:0 18px 40px -14px rgba(243,200,96,.25)}
+.thumb{
+  position:relative;aspect-ratio:3/4;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(150deg,hsl(var(--h) 42% 24%),hsl(var(--h) 45% 11%));
+}
+.thumb .ph{font-size:2.7rem;opacity:.9;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6))}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s}
+.card:hover .thumb img{transform:scale(1.06)}
+.tag{
+  position:absolute;top:8px;left:8px;z-index:2;
+  font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:4px 9px;border-radius:999px;
+  background:linear-gradient(135deg,#ff3d6e,#ff8a3d);color:#fff;
+  box-shadow:0 5px 14px rgba(255,61,110,.5);
+}
+.wish{
+  position:absolute;top:7px;right:7px;z-index:2;width:29px;height:29px;border-radius:50%;
+  display:grid;place-items:center;font-size:.78rem;
+  background:rgba(8,8,11,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);
+}
+.card-body{padding:10px 11px 12px;display:flex;flex-direction:column;gap:5px;flex:1}
+.cat-label{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.85}
+.p-name{font-size:.79rem;font-weight:500;line-height:1.35;min-height:2.15em}
+.prices{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:3px}
+.p-now{font-size:.92rem;font-weight:700;color:#fff;letter-spacing:-.2px}
+.p-old{font-size:.66rem;color:#75757f;text-decoration:line-through}
+.order{
+  margin-top:9px;width:100%;padding:9px 6px;border-radius:12px;position:relative;overflow:hidden;
+  font-size:.73rem;font-weight:700;color:#1a1305;
+  background:linear-gradient(135deg,#ffe9a8,#e0a92b);
+  transition:transform .15s, box-shadow .25s;
+}
+.order::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.75) 50%,transparent 75%);
+  transform:translateX(-130%);transition:transform .6s;
+}
+.order:hover::after{transform:translateX(130%)}
+.order:active{transform:scale(.96)}
+.order.added{background:linear-gradient(135deg,#6ef0a1,#25d366);color:#04240f}
+
+.info{margin:6px 16px 30px;display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:620px){.info{grid-template-columns:repeat(3,1fr);max-width:1140px;margin-inline:auto}}
+.info div{
+  display:flex;gap:11px;align-items:center;padding:14px;border-radius:16px;
+  background:#101017;border:1px solid var(--line);
+}
+.info b{display:block;font-size:.76rem;margin-bottom:2px}
+.info span{font-size:.66rem;color:var(--mut);line-height:1.45}
+.info i{font-style:normal;font-size:1.25rem}
+
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;
+  padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(10,10,14,.92);
+  backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);
+  border-top:1px solid rgba(243,200,96,.18);
+}
+.tab{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;
+  font-size:.58rem;color:#7d7d88;padding:5px 0;border-radius:12px;transition:.2s;
+}
+.tab .i{font-size:1.15rem;transition:transform .2s}
+.tab.active{color:var(--gold)}
+.tab.active .i{transform:translateY(-2px) scale(1.1)}
+.tab .count{top:0;right:calc(50% - 20px)}
+
+.overlay{
+  position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.overlay.on{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(410px,100%);
+  display:flex;flex-direction:column;background:#0c0c11;
+  border-left:1px solid rgba(243,200,96,.2);
+  transform:translateX(102%);transition:transform .36s cubic-bezier(.4,0,.2,1);
+  box-shadow:-20px 0 60px rgba(0,0,0,.7);
+}
+.drawer.open{transform:none}
+.d-head{
+  display:flex;align-items:center;gap:10px;
+  padding:calc(16px + env(safe-area-inset-top)) 16px 16px;
+  border-bottom:1px solid var(--line);
+}
+.d-head h2{font-family:'Playfair Display',serif;font-size:1.12rem}
+.d-head small{font-size:.6rem;color:var(--mut);display:block;margin-top:2px}
+.d-list{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px}
+.c-item{display:flex;gap:11px;padding:10px;border-radius:15px;
+  background:#12121a;border:1px solid var(--line)}
+.c-thumb{
+  width:64px;height:80px;flex:none;border-radius:11px;overflow:hidden;position:relative;
+  display:grid;place-items:center;font-size:1.4rem;
+  background:linear-gradient(150deg,hsl(var(--h) 42% 24%),hsl(var(--h) 45% 11%));
+}
+.c-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.c-name{font-size:.76rem;font-weight:500;line-height:1.3}
+.c-price{font-size:.78rem;font-weight:700;color:var(--goldL)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:auto}
+.qty button{
+  width:25px;height:25px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;
+  background:#1e1e28;border:1px solid var(--line);color:var(--goldL);transition:.15s;
+}
+.qty button:active{transform:scale(.9)}
+.qty span{font-size:.76rem;font-weight:600;min-width:16px;text-align:center}
+.qty .rm{margin-left:auto;width:auto;height:auto;padding:4px 8px;font-size:.6rem;
+  background:none;border:0;color:#ff6b8a;letter-spacing:.03em}
+.d-foot{padding:14px 16px calc(16px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--line);background:#0a0a0f}
+.d-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.d-total span{font-size:.7rem;color:var(--mut);letter-spacing:.08em;text-transform:uppercase}
+.d-total b{font-family:'Playfair Display',serif;font-size:1.32rem;color:var(--goldL)}
+.checkout{
+  width:100%;padding:15px;border-radius:15px;font-size:.84rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,#34e07a,#1faa52);color:#04230f;
+  box-shadow:0 12px 30px -10px rgba(37,211,102,.85);transition:.2s;
+}
+.checkout:active{transform:scale(.97)}
+.empty{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:var(--mut);font-size:.8rem;text-align:center;padding:40px 24px;
+}
+.empty .big{font-size:2.6rem;opacity:.5}
+
+.toast{
+  position:fixed;left:50%;bottom:96px;z-index:120;transform:translate(-50%,26px);
+  padding:11px 20px;border-radius:13px;font-size:.76rem;font-weight:500;
+  background:rgba(24,24,32,.97);border:1px solid rgba(243,200,96,.45);color:var(--goldL);
+  box-shadow:0 14px 40px rgba(0,0,0,.75);
+  opacity:0;pointer-events:none;transition:.3s;white-space:nowrap;max-width:90vw;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+#installBtn{
+  display:none;position:fixed;bottom:82px;left:50%;transform:translateX(-50%);z-index:90;
+  padding:10px 18px;border-radius:999px;font-size:.72rem;font-weight:600;
+  background:linear-gradient(135deg,#ffe9a8,#e0a92b);color:#1a1305;
+  box-shadow:0 12px 30px -8px rgba(243,200,96,.9);align-items:center;gap:7px;
+}
+#installBtn.on{display:inline-flex}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">J</div>
+  <div class="brand">
+    <b class="gold-text">JOSHELLA</b>
+    <small>SMART SHOP</small>
+  </div>
+  <div class="spacer"></div>
+  <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+    🛍️<span class="count" id="cartCount">0</span>
+  </button>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="pill">🇺🇬 Kampala • Same-day delivery</span>
+    <h1>Shine in <em class="gold-text">every</em><br>fit you wear.</h1>
+    <p>Trendy clothes, fresh kicks, glowing jewelry &amp; luxury perfumes — all in one smart shop.</p>
+    <div class="hero-cta">
+      <button class="btn gold" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth',block:'start'})">
+        ✨ Shop Now
+      </button>
+      <button class="btn ghost" id="waBtn">💬 Chat with us</button>
+    </div>
+    <div class="hero-strip">
+      <div><b>40%</b><span>MAX DISCOUNT</span></div>
+      <div><b>500+</b><span>HAPPY CLIENTS</span></div>
+      <div><b>24H</b><span>DELIVERY</span></div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="search">
+      <span>🔍</span>
+      <input id="search" type="search" placeholder="Search dresses, sneakers, perfume…" aria-label="Search products">
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <section class="grid" id="grid"></section>
+
+  <section class="info">
+    <div><i>🚚</i><div><b>Fast Delivery</b><span>Kampala same-day • upcountry 1–2 days</span></div></div>
+    <div><i>📱</i><div><b>MTN MoMo &amp; Airtel</b><span>Pay on delivery or via mobile money</span></div></div>
+    <div><i>📞</i><div><b>Call / WhatsApp</b><span>+256 701 183 595 · +965 4110 2627</span></div></div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <button class="tab active" data-nav="home"><span class="i">🏠</span>Home</button>
+  <button class="tab" data-nav="shop"><span class="i">🛍️</span>Shop</button>
+  <button class="tab" data-nav="cart"><span class="i">🛒</span>Cart<span class="count" id="cartCount2">0</span></button>
+  <button class="tab" data-nav="wa"><span class="i">💬</span>Chat</button>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="d-head">
+    <div>
+      <h2>Your Bag</h2>
+      <small id="dCount">0 item(s)</small>
+    </div>
+    <div class="spacer"></div>
+    <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
+  </div>
+  <div class="d-list" id="cartList"></div>
+  <div class="d-foot">
+    <div class="d-total"><span>Total</span><b id="cartTotal">UGX 0</b></div>
+    <button class="checkout" id="checkoutBtn">💬 Order on WhatsApp</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+<button id="installBtn">⬇️ Install JOSHELLA App</button>
+
+<script>
+const WA_NUMBER = "256701183595";
+
+const PRODUCTS = [
+  { id:'p1',  name:'Ankara Print Midi Dress',      cat:'Clothes',  price:120000, old:150000, emoji:'👗', hue:340,
+    img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=70' },
+  { id:'p2',  name:'Men\u2019s Slim-Fit Office Shirt', cat:'Clothes', price:65000, old:85000, emoji:'👔', hue:215,
+    img:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=70' },
+  { id:'p3',  name:'Kitenge Two-Piece Set',        cat:'Clothes',  price:145000, old:0,      emoji:'🥻', hue:25,
+    img:'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=600&q=70' },
+  { id:'p4',  name:'Classic Denim Jacket',         cat:'Clothes',  price:95000, old:120000, emoji:'🧥', hue:205,
+    img:'https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=600&q=70' },
+
+  { id:'p5',  name:'Air Runner Sneakers',          cat:'Shoes',    price:220000, old:280000, emoji:'👟', hue:0,
+    img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=70' },
+  { id:'p6',  name:'Leather Official Shoes',       cat:'Shoes',    price:150000, old:0,      emoji:'👞', hue:20,
+    img:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=600&q=70' },
+  { id:'p7',  name:'Stiletto Heels — Nude',        cat:'Shoes',    price:85000, old:110000, emoji:'👠', hue:335,
+    img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=70' },
+  { id:'p8',  name:'Comfort Open Sandals',         cat:'Shoes',    price:45000, old:60000,  emoji:'🩴', hue:45,
+    img:'https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=600&q=70' },
+
+  { id:'p9',  name:'Gold-Plated Necklace Set',     cat:'Jewelry',  price:75000, old:95000,  emoji:'📿', hue:48,
+    img:'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=70' },
+  { id:'p10', name:'Beaded Bracelet Stack',        cat:'Jewelry',  price:35000, old:0,      emoji:'💫', hue:280,
+    img:'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=70' },
+  { id:'p11', name:'Diamond-Cut Earrings',         cat:'Jewelry',  price:55000, old:72000,  emoji:'💎', hue:195,
+    img:'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=70' },
+
+  { id:'p12', name:'Oud Royal Perfume 100ml',      cat:'Perfumes', price:180000, old:220000, emoji:'🧴', hue:35,
+    img:'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=70' },
+  { id:'p13', name:'Vanilla Bloom 50ml',           cat:'Perfumes', price:95000, old:0,       emoji:'🌸', hue:320,
+    img:'https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=600&q=70' },
+  { id:'p14', name:'Luxury Gift Perfume Set',      cat:'Perfumes', price:150000, old:195000, emoji:'🎁', hue:300,
+    img:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=70' }
+];
+
+const CATS = [
+  { key:'All',      icon:'✨' },
+  { key:'Clothes',  icon:'👗' },
+  { key:'Shoes',    icon:'👟' },
+  { key:'Jewelry',  icon:'💎' },
+  { key:'Perfumes', icon:'🧴' }
+];
+
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('joshella_cart') || '{}') || {}; } catch(e){ cart = {}; }
+let activeCat = 'All';
+let query = '';
+
+const $ = id => document.getElementById(id);
+const grid = $('grid');
+const fmt = n => 'UGX ' + Number(n).toLocaleString('en-US');
+const disc = p => p.old ? Math.round((1 - p.price / p.old) * 100) : 0;
+
+$('chips').innerHTML = CATS.map(c =>
+  `<button class="chip${c.key === 'All' ? ' active' : ''}" data-cat="${c.key}">${c.icon} ${c.key}</button>`
+).join('');
+
+$('chips').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cat]');
+  if (!btn) return;
+  activeCat = btn.dataset.cat;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === btn));
+  renderProducts();
+});
+
+function renderProducts(){
+  const list = PRODUCTS.filter(p =>
+    (activeCat === 'All' || p.cat === activeCat) &&
+    (p.name.toLowerCase().includes(query) || p.cat.toLowerCase().includes(query))
+  );
+
+  if (!list.length){
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">
+      <span class="big">🔎</span>No products match “${query}”.<br>Try another search.
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map((p, i) => {
+    const d = disc(p);
+    return `
+    <article class="card" style="animation-delay:${i * 45}ms">
+      <div class="thumb" style="--h:${p.hue}">
+        <span class="ph">${p.emoji}</span>
+        <img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.remove()">
+        ${d ? `<span class="tag">-${d}%</span>` : ''}
+        <button class="wish" aria-label="Save">♡</button>
+      </div>
+      <div class="card-body">
+        <span class="cat-label">${p.cat}</span>
+        <h3 class="p-name">${p.name}</h3>
+        <div class="prices">
+          <span class="p-now">${fmt(p.price)}</span>
+          ${p.old ? `<span class="p-old">${fmt(p.old)}</span>` : ''}
+        </div>
+        <button class="order" data-add="${p.id}">🛒 Order Now</button>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+$('search').addEventListener('input', e => {
+  query = e.target.value.trim().toLowerCase();
+  renderProducts();
+});
+
+grid.addEventListener('click', e => {
+  const btn = e.target.closest('[data-add]');
+  if (!btn) return;
+  addToCart(btn.dataset.add, btn);
+});
+
+function addToCart(id, btn){
+  cart[id] = (cart[id] || 0) + 1;
+  saveCart();
+  const p = PRODUCTS.find(x => x.id === id);
+  toast(`${p.emoji} ${p.name} added to bag`);
+  if (btn){
+    btn.classList.add('added');
+    btn.textContent = '✓ Added';
+    setTimeout(() => { btn.classList.remove('added'); btn.textContent = '🛒 Order Now'; }, 1100);
+  }
+  const cc = $('cartBtn');
+  cc.classList.remove('pop'); void cc.offsetWidth; cc.classList.add('pop');
+}
+
+function saveCart(){
+  localStorage.setItem('joshella_cart', JSON.stringify(cart));
+  renderCart();
+  const n = Object.values(cart).reduce((a, b) => a + b, 0);
+  $('cartCount').textContent = n;
+  $('cartCount2').textContent = n;
+}
+
+function renderCart(){
+  const entries = Object.entries(cart).filter(([id]) => PRODUCTS.some(p => p.id === id));
+  const listEl = $('cartList');
+  const total = entries.reduce((s, [id, q]) => s + PRODUCTS.find(p => p.id === id).price * q, 0);
+  const count = entries.reduce((s, [, q]) => s + q, 0);
+
+  $('cartTotal').textContent = fmt(total);
+  $('dCount').textContent = count + ' item(s)';
+
+  if (!entries.length){
+    listEl.innerHTML = `<div class="empty">
+      <span class="big">🛍️</span>
+      Your bag is empty.<br>Add some shine to it!
+    </div>`;
+    return;
+  }
+
+  listEl.innerHTML = entries.map(([id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === id);
+    return `
+    <div class="c-item">
+      <div class="c-thumb" style="--h:${p.hue}">
+        <span>${p.emoji}</span>
+        <img src="${p.img}" alt="" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="c-info">
+        <div class="c-name">${p.name}</div>
+        <div class="c-price">${fmt(p.price * qty)}</div>
+        <div class="qty">
+          <button data-act="dec" data-id="${id}" aria-label="Decrease">−</button>
+          <span>${qty}</span>
+          <button data-act="inc" data-id="${id}" aria-label="Increase">+</button>
+          <button class="rm" data-act="rm" data-id="${id}">Remove</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+$('cartList').addEventListener('click', e => {
+  const b = e.target.closest('[data-act]');
+  if (!b) return;
+  const { act, id } = b.dataset;
+  if (act === 'inc') cart[id]++;
+  if (act === 'dec') { cart[id]--; if (cart[id] <= 0) delete cart[id]; }
+  if (act === 'rm') delete cart[id];
+  saveCart();
+});
+
+const drawer = $('drawer'), overlay = $('overlay');
+function openCart(){ drawer.classList.add('open'); overlay.classList.add('on'); document.body.style.overflow = 'hidden'; }
+function closeCart(){ drawer.classList.remove('open'); overlay.classList.remove('on'); document.body.style.overflow = ''; }
+$('cartBtn').addEventListener('click', openCart);
+$('closeCart').addEventListener('click', closeCart);
+overlay.addEventListener('click', closeCart);
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const nav = tab.dataset.nav;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+    if (nav === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (nav === 'shop') $('grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (nav === 'cart') openCart();
+    if (nav === 'wa') openWhatsApp('Hello JOSHELLA Smart Shop! 👋 I would like to ask about your products.');
+  });
+});
+
+function openWhatsApp(msg){
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+$('waBtn').addEventListener('click', () =>
+  openWhatsApp('Hello JOSHELLA Smart Shop! 👋 I saw your online shop and I am interested in your products.')
+);
+
+$('checkoutBtn').addEventListener('click', () => {
+  const entries = Object.entries(cart).filter(([id]) => PRODUCTS.some(p => p.id === id));
+  if (!entries.length) return toast('Your bag is empty 🛒');
+
+  let total = 0;
+  const lines = entries.map(([id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === id);
+    total += p.price * qty;
+    return `• ${p.name} × ${qty} — ${fmt(p.price * qty)}`;
+  });
+
+  const msg = [
+    'Hello JOSHELLA Smart Shop! 👋',
+    '',
+    'I would like to place an order:',
+    ...lines,
+    '',
+    `TOTAL: ${fmt(total)}`,
+    '',
+    'Name: ',
+    'Delivery location: ',
+    'Payment: MTN MoMo / Airtel Money / Cash on delivery'
+  ].join('\n');
+
+  openWhatsApp(msg);
+});
+
+let toastTimer;
+function toast(msg){
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffe9a8"/><stop offset=".5" stop-color="#f3c860"/><stop offset="1" stop-color="#b8860b"/>
+</linearGradient></defs>
+<rect width="512" height="512" rx="112" fill="#08080b"/>
+<rect x="26" y="26" width="460" height="460" rx="92" fill="none" stroke="url(#g)" stroke-width="7" opacity=".6"/>
+<text x="256" y="342" font-family="Georgia,serif" font-size="248" font-weight="700" fill="url(#g)" text-anchor="middle">J</text>
+</svg>`;
+const ICON_URL = 'data:image/svg+xml,' + encodeURIComponent(ICON_SVG);
+
+const manifest = {
+  name: 'JOSHELLA Smart Shop',
+  short_name: 'JOSHELLA',
+  description: "Uganda's smart shop for clothes, shoes, jewelry and perfumes.",
+  start_url: location.href.split('?')[0],
+  scope: location.href.replace(/[^/]*$/, ''),
+  display: 'standalone',
+  orientation: 'portrait',
+  background_color: '#08080b',
+  theme_color: '#08080b',
+  icons: [
+    { src: ICON_URL, sizes: '192x192', type: 'image/svg+xml', purpose: 'any' },
+    { src: ICON_URL, sizes: '512x512', type: 'image/svg+xml', purpose: 'any maskable' }
+  ]
+};
+try {
+  const blob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+  $('manifest').href = URL.createObjectURL(blob);
+} catch(e){}
+
+if ('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  $('installBtn').classList.add('on');
+});
+$('installBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  $('installBtn').classList.remove('on');
+});
+window.addEventListener('appinstalled', () => $('installBtn').classList.remove('on'));
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
